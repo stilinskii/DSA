@@ -66,4 +66,31 @@ public class LinkedList {
         }
     }
 
+    public Node removeLast(){
+
+        Node temp = head;
+        Node pre = head;
+        if(this.length > 0){
+
+            while(temp.next != null){
+                pre = temp;
+                temp = temp.next;
+            }
+
+            this.tail = pre;
+            tail.next = null;
+
+            //length 가 0이 되었는데
+            //head와 tail은 아직 전의 노드를 가리키고있을때 방지.
+            length--;
+            if(length == 0){
+                this.head=null;
+                this.tail=null;
+            }
+
+        }
+
+        return temp;
+    }
+
 }
