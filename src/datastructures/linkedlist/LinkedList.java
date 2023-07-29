@@ -168,5 +168,37 @@ public class LinkedList {
         return true;
     }
 
+    public Node remove(int index){
+
+        if(index < 0 || index >= length) return null;
+
+        //해당 인덱스 노드 찾기
+        Node nodeTobeRemoved = get(index);
+
+        //임시저장
+        Node temp = nodeTobeRemoved;
+
+        //앞 뒤 연결 끊기
+        //처음꺼 삭제경우
+        if(index-1 < 0){
+            removeFirst();
+        }else if(index == length-1){
+            //마지막꺼 삭제경우
+            removeLast();
+        }else{
+            //중간삭제경우
+            get(index-1).next = nodeTobeRemoved.next;
+            length--;
+        }
+
+        //삭제노드 연결 끊기
+        nodeTobeRemoved.next=null;
+
+
+        //임시저장 return
+        return temp;
+
+    }
+
 
 }
