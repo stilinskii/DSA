@@ -21,8 +21,9 @@ public class DoublyLinkedList {
         Node newNode = new Node(value);
         head = newNode;
         tail = newNode;
-        length++;
+        length=1;
     }
+
 
 
     //                                                          //
@@ -65,6 +66,26 @@ public class DoublyLinkedList {
         } else {
             printList();
         }
+    }
+
+    public void append(int value){
+        Node newNode = new Node(value);
+
+        if(length == 0){
+            head = newNode;
+            tail = newNode;
+
+        }else{
+            //link new node to last node
+            newNode.prev = tail;
+            //link last node to new node
+            tail.next = newNode;
+            //set tail to point new node
+            tail = newNode;
+        }
+
+        length++;
+
     }
 
 }
